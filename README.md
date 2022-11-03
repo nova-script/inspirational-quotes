@@ -17,9 +17,9 @@ Additionally, there's a list of technologies the company uses (tech stack) which
 
 👤 User features:
 
-[x] View all registered quotes
-[x] View especific quote
-[x] Register new quote
-[x] Edit existent quote
-[x] Delete existent quote
+- [x] View all registered quotes
+- [x] View especific quote
+- [x] Register new quote
+- [x] Edit existent quote
+- [x] Delete existent quote
 
