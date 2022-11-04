@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  inspirational-quotes-db:
+    image: mongo:6
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - '27017:27017'
+    volumes:
+      - inspirational-quotes-db:/data/db
+  inspirational-quotes-api:
+    restart: always
+    depends_on:
+      - inspirational-quotes-db
+    build:
+      context: ./api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/usr/src/app
+  
+volumes:
+  inspirational-quotes-db:
