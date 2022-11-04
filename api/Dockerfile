@@ -1,15 +1,16 @@
-FROM node:17
+FROM node:19
 
 # Create API directory
-WORKDIR /usr/src/app/inspirational-quotes-api
+WORKDIR /usr/src/app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
+COPY ./package*.json ./
 
 # Install dependencies
-RUN npm install --quiet
+RUN npm install --dev
 
 # Bundle app source
 COPY . . 
 
-ENTRYPOINT npm run start
+EXPOSE 8000
+CMD [ "npm", "start" ]

@@ -6,7 +6,14 @@ import mongoose from 'mongoose';
 
 import GraphQLSchema from './graphql/schema';
 
-mongoose.connect('mongodb://localhost:27017/graphql')
+mongoose.connect(
+    'mongodb://inspirational-quotes-db:27017/graphql',
+    {
+        authSource: "admin",
+        user: "root",
+        pass: "rootpassword",
+    });
+
 mongoose.connection.once('open', () => {
     console.log('Successfully connected to database!');
 });
