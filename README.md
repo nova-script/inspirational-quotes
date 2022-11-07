@@ -12,6 +12,7 @@ They asked the participants to build a simple CRUD using `GraphQL` and `Relay`.
 
 Additionally, there's a list of technologies the company uses (tech stack) which I'm trying to implement as much as possible.
 
+It should also be a complete social media in the near future, along with user registration, login and feed of latests registered quotes.
 
 ## API
 
