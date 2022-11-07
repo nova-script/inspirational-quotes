@@ -1,0 +1,28 @@
+schema {
+  query: RootQueryType
+  mutation: Mutation
+}
+
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+type Mutation {
+  addQuote(author: String, quote: String): Quote
+  editQuote(id: String, author: String, quote: String): Quote
+  removeQuote(id: String): Quote
+}
+
+type Quote {
+  id: String
+  author: String
+  quote: String
+}
+
+type RootQueryType {
+  queryQuoteById(id: String): Quote
+  queryAllQuotes: [Quote]
+}
+
