@@ -43,6 +43,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-relay": "^14.1.0",
+    "recoil": "^0.7.6",
     "relay-compiler-language-typescript": "^15.0.1",
     "relay-runtime": "^14.1.0",
     "styled-components": "^5.2.1",
