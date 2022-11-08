@@ -6,6 +6,7 @@ import { forwardRef, RefObject, useEffect, useImperativeHandle, useState } from 
 
 
 interface QuoteFieldProps {
+    placeholder: string;
     type: string;
     content: string;
     isEditing: boolean;
@@ -51,7 +52,7 @@ export const QuoteField = forwardRef((props: QuoteFieldProps, ref) => {
         sx={{width: "100%"}}
         multiline
         inputProps={inputProps}
-        label={props.type === "author"? "Edit author": "Edit quote"}
+        label={props.placeholder}
         variant="outlined"
         onChange={(e) => setContent(e.target.value)}
         defaultValue={props.content}/> :
