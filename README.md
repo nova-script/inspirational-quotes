@@ -20,7 +20,7 @@ It should also be a complete social media in the near future, along with user re
 
 - [x] View all registered quotes
 - [x] View especific quote
-- [x] Register new quote
+- [x] Add new quote
 - [x] Edit existent quote
 - [x] Delete existent quote
 
@@ -31,3 +31,5 @@ It should also be a complete social media in the near future, along with user re
 
 - [x] View all registered quotes
 - [x] Edit existent quote
+- [x] Delete existent quote
+- [x] Add new quote
