@@ -11,6 +11,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { commitEditQuoteMutation } from '../relay/quotes/EditQuoteMutation';
 import relayEnvironment from '../relay/relayEnvironment';
 import { QuoteField } from './QuoteField';
+import RemoveQuote from './RemoveQuote';
+import { atom, useRecoilState } from 'recoil';
 
 
 interface QuoteProps {
@@ -19,12 +21,19 @@ interface QuoteProps {
   quote: string;
 }
 
+export const openQuoteRemovalModal = atom({
+  key: 'openQuoteModal',
+  default: false,
+});
 
 export default function Quote(props: QuoteProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
   const authorRef: RefObject<any> = createRef()
   const quoteRef: RefObject<any> = createRef()
+
+  const [openModal, setOpenModal] = useRecoilState(openQuoteRemovalModal)
+
 
   function handleEditButton(): any {
     if (isEditing === false) {
@@ -41,6 +50,15 @@ export default function Quote(props: QuoteProps) {
     }
   }
 
+  function handleRemoveButton(): any {
+    if (isEditing === true) {
+      setIsEditing(false)
+      return
+    } else {
+      setOpenModal(true)
+    }
+  }
+
   return (
     <Card sx={{
         height: '100%',
@@ -51,12 +69,14 @@ export default function Quote(props: QuoteProps) {
         <QuoteField
         type="quote"
         content={props.quote}
+        placeholder={"Edit quote"}
         isEditing={isEditing}
         ref={quoteRef}/>
       
         <QuoteField
         type="author"
         content={props.author}
+        placeholder={"Edit author"}
         isEditing={isEditing}
         ref={authorRef}/>
 
@@ -65,9 +85,11 @@ export default function Quote(props: QuoteProps) {
             size="small"
             color="error"
             variant="contained"
+            onClick={(e) => {handleRemoveButton()}}
             sx={{ height: "100%", width: "50%", borderRadius: 0, borderBottomLeftRadius: 4}}>
                 {isEditing? <CancelIcon/> : <BackspaceIcon/>}
             </Button>
+            <RemoveQuote id={props.id} open={openModal}/>
             <Button
             onClick={() => handleEditButton()}
             size="small"
