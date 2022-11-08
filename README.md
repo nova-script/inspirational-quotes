@@ -24,3 +24,10 @@ It should also be a complete social media in the near future, along with user re
 - [x] Edit existent quote
 - [x] Delete existent quote
 
+
+## WEB
+
+👤 User features:
+
+- [x] View all registered quotes
+- [x] Edit existent quote
