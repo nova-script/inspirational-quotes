@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { Card } from '@mui/material';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 import relayEnvironment from '../relay/relayEnvironment';
@@ -59,7 +60,7 @@ export default function RemoveQuote(props: RemoveQuoteProps) {
                     flexDirection: 'column',
                     justifyContent: 'space-between'}}>
 
-                    <Typography margin={2} marginBottom={0} variant='h6' fontWeight={900} color='primary'>
+                    <Typography margin={2} marginBottom={0} variant='h6' fontWeight={900} textAlign='center'>
                         Are you sure you want to delete?
                     </Typography>
 
@@ -75,10 +76,10 @@ export default function RemoveQuote(props: RemoveQuoteProps) {
                         <Button
                         onClick={() => handleRemoveButton()}
                         size="small"
-                        color="primary"
+                        color="warning"
                         variant="contained"
                         sx={{ height: "100%", width: "50%", padding: "10px", borderRadius: 0, borderBottomRightRadius: 4}}>
-                            <AddCircleIcon/>
+                            <DeleteForeverIcon/>
                         </Button>
                     </Box>
                 </Card>
