@@ -1,21 +1,17 @@
-import { useState } from 'react';
+import { createRef, RefObject, useState } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-import { useMutation, graphql } from 'react-relay';
-import { EditQuoteMutation } from '../relay/quotes/EditQuoteMutation';
+import { commitEditQuoteMutation } from '../relay/quotes/EditQuoteMutation';
+import relayEnvironment from '../relay/relayEnvironment';
+import { QuoteField } from './QuoteField';
 
-import QuoteField from './QuoteField';
 
 interface QuoteProps {
   id: string;
@@ -25,10 +21,25 @@ interface QuoteProps {
 
 
 export default function Quote(props: QuoteProps) {
-  const [isEditing, setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState<boolean>(false)
 
-  const [commitMutation, isMutationInFlight] = useMutation(EditQuoteMutation)
+  const authorRef: RefObject<any> = createRef()
+  const quoteRef: RefObject<any> = createRef()
 
+  function handleEditButton(): any {
+    if (isEditing === false) {
+      setIsEditing(true)
+      return
+    } else {
+      // The user is trying to save the editing.
+      commitEditQuoteMutation(
+        relayEnvironment,
+        props.id,
+        quoteRef.current.getContent(),
+        authorRef.current.getContent())
+      setIsEditing(false)
+    }
+  }
 
   return (
     <Card sx={{
@@ -40,12 +51,14 @@ export default function Quote(props: QuoteProps) {
         <QuoteField
         type="quote"
         content={props.quote}
-        isEditing={isEditing}/>
+        isEditing={isEditing}
+        ref={quoteRef}/>
       
         <QuoteField
         type="author"
         content={props.author}
-        isEditing={isEditing}/>
+        isEditing={isEditing}
+        ref={authorRef}/>
 
         <Box sx={{minWidth: "20%", marginTop: "15px"}}>
             <Button
@@ -56,7 +69,7 @@ export default function Quote(props: QuoteProps) {
                 {isEditing? <CancelIcon/> : <BackspaceIcon/>}
             </Button>
             <Button
-            onClick={() => setIsEditing(!isEditing)}
+            onClick={() => handleEditButton()}
             size="small"
             color={isEditing? "primary" : "success"}
             variant="contained"
