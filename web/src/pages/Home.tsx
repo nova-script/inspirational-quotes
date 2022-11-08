@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { QueryRenderer, graphql } from 'react-relay';
-import { Box, Grid } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import Container from '@mui/material/Container';
 import ResponsiveAppBar from '../components/ResponsiveAppBar';
 import Quote from '../components/Quote';
 import RelayEnvironment from '../relay/relayEnvironment';
 import { HomeStyle } from '../assets/styles/Home';
 import { AppAllQuotesQuery } from '../relay/quotes/AppAllQuotesQuery';
+
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddQuote from '../components/AddQuote';
+import { RecoilRoot, atom, useRecoilState } from 'recoil';
 
 const renderQuotes = ({error, props}) => {
   if (error)
@@ -24,24 +28,33 @@ const renderQuotes = ({error, props}) => {
   return <div> Loading </div>
 }
 
+export const refetchAtom = atom({
+  key: 'refetch',
+  default: false,
+});
+
 export default function Home(props: any) {
-    return (
+  const [refetchHome, setRefetchHome] = useRecoilState(refetchAtom);
+
+
+  return (
       <div>
         <HomeStyle/>
         <ResponsiveAppBar/>
-        <Box sx={{ mt: 10 }}>
-          
-        </Box>
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ mt: 10 }}>
+          <Grid container spacing={2} sx={{ mb: 2 }}>
+            <Grid item xs={12} md={4}>
+              <AddQuote/>
+            </Grid>
+          </Grid>
           <Grid container spacing={2}>
             <QueryRenderer
               environment={RelayEnvironment}
               query={AppAllQuotesQuery}
               render={renderQuotes}
-              variables={{}}
-            />
+              variables={{refetch: refetchHome}}/>
           </Grid>
         </Container>
       </div>
-    )
+  )
 }
