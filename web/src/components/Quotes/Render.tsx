@@ -16,13 +16,12 @@ export default function RenderQuotes(props: RenderQuotesProps) {
     const data: any = usePreloadedQuery(homeAllQuotesQuery, props.queryReference);
 
     return data.queryAllQuotes.map(
-            (data: any) => (<Grid item xs={12} md={4}>
+            (data: any) => (<Grid key={data.id} item xs={12} md={4}>
                     <Quote
                     id={data.id}
                     refresh={props.refresh}
                     author={data.author}
-                    quote={data.quote}
-                    key={data.id}/>
+                    quote={data.quote}/>
                 </Grid>))
 
 }
