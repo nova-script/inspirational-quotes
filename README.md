@@ -14,7 +14,7 @@ Additionally, there's a list of technologies the company uses (tech stack) which
 
 It should also be a complete social media in the near future, along with user registration, login and feed of latests registered quotes.
 
-#### You can check the full changelog [here](changelog.md), containing the next improvements to be made. 
+### You can check the full changelog [here](changelog.md), containing the next improvements to be made. 
 ---
 
 ## **How to Run**:
