@@ -1,0 +1,15 @@
+{
+  "name": "inspirational-quotes",
+  "version": "1.0.0",
+  "description": "Inspirational quotes is a website where you can store your favorite quotes.",
+  "scripts": {
+    "dev": "turbo run start dev",
+    "lint": "turbo run lint"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.6.3"
+  }
+}
