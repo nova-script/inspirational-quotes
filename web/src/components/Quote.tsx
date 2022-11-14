@@ -19,6 +19,7 @@ interface QuoteProps {
   id: string;
   author: string;
   quote: string;
+  refresh: any;
 }
 
 export const openQuoteRemovalModal = atom({
@@ -89,7 +90,7 @@ export default function Quote(props: QuoteProps) {
             sx={{ height: "100%", width: "50%", borderRadius: 0, borderBottomLeftRadius: 4}}>
                 {isEditing? <CancelIcon/> : <BackspaceIcon/>}
             </Button>
-            <RemoveQuote id={props.id} open={openModal}/>
+            <RemoveQuote refresh={props.refresh} id={props.id} open={openModal}/>
             <Button
             onClick={() => handleEditButton()}
             size="small"

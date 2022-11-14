@@ -29,6 +29,7 @@ const style = {
 interface RemoveQuoteProps {
     id: string;
     open: boolean;
+    refresh: any;
 }
 
 
@@ -43,6 +44,7 @@ export default function RemoveQuote(props: RemoveQuoteProps) {
             relayEnvironment,
             props.id)
         setRefetch(!refetch)
+        props.refresh()
         setOpenModal(false)
     }
     function handleCancelButton(): any {

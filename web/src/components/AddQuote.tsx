@@ -25,7 +25,11 @@ const style = {
   width: '420px',
 };
 
-export default function AddQuote() {
+interface AddQuoteProps {
+    refresh: any;
+}
+
+export default function AddQuote(props: AddQuoteProps) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -41,6 +45,7 @@ export default function AddQuote() {
             quoteRef.current.getContent(),
             authorRef.current.getContent())
         setRefetch(!refetch)
+        props.refresh()
         handleClose()
     }
 
