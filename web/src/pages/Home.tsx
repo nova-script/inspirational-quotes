@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { QueryRenderer, graphql } from 'react-relay';
+import {
+  QueryRenderer,
+  graphql,
+  useQueryLoader,
+  usePreloadedQuery,
+  loadQuery
+} from 'react-relay';
 import { Box, Button, Grid, Typography } from '@mui/material'
 import Container from '@mui/material/Container';
 import ResponsiveAppBar from '../components/ResponsiveAppBar';
@@ -11,50 +17,44 @@ import { AppAllQuotesQuery } from '../relay/quotes/AppAllQuotesQuery';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import AddQuote from '../components/AddQuote';
 import { RecoilRoot, atom, useRecoilState } from 'recoil';
+import relayEnvironment from '../relay/relayEnvironment';
+import RenderQuotes from '../components/Quotes/Render';
+import QuotesFetcher from '../components/Quotes/Fetcher';
 
-const renderQuotes = ({error, props}) => {
-  if (error)
-    return <div>{error.message}</div>
-  else if (props)
-    return (
-        props.queryAllQuotes.map((data: any) =>
-          <Grid item xs={12} md={4}>
-              <Quote
-              id={data.id}
-              author={data.author}
-              quote={data.quote}
-              key={data.id}/>
-          </Grid>))
-  return <div> Loading </div>
-}
+import type {
+  AppAllQuotesQuery as AppAllQuotesQueryType
+} from '../relay/quotes/__generated__/AppAllQuotesQuery.graphql';
 
 export const refetchAtom = atom({
   key: 'refetch',
   default: false,
 });
 
-export default function Home(props: any) {
-  const [refetchHome, setRefetchHome] = useRecoilState(refetchAtom);
+export const homeAllQuotesQuery = graphql`
+query HomeAllQuotesQuery {
+  queryAllQuotes {
+    id
+    quote
+    author
+  }
+}`;
 
+const queryReference: any = loadQuery(
+  relayEnvironment,
+  homeAllQuotesQuery,
+  {}
+)
+
+
+export default function Home(props: any) {
+  const preloadedQuery = usePreloadedQuery<AppAllQuotesQueryType>(
+    homeAllQuotesQuery, queryReference);
 
   return (
       <div>
         <HomeStyle/>
         <ResponsiveAppBar/>
-        <Container maxWidth="xl" sx={{ mt: 10 }}>
-          <Grid container spacing={2} sx={{ mb: 2 }}>
-            <Grid item xs={12} md={4}>
-              <AddQuote/>
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <QueryRenderer
-              environment={RelayEnvironment}
-              query={AppAllQuotesQuery}
-              render={renderQuotes}
-              variables={{refetch: refetchHome}}/>
-          </Grid>
-        </Container>
+        <QuotesFetcher queryReference={preloadedQuery}/>
       </div>
   )
 }
