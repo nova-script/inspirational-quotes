@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 import GraphQLSchema from './graphql/schema';
 
 mongoose.connect(
-    'mongodb://inspirational-quotes-db:27017/graphql',
+    'mongodb://0.0.0.0:27017/graphql',
     {
         authSource: "admin",
         user: "root",
