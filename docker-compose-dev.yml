@@ -10,16 +10,6 @@ services:
       - '27017:27017'
     volumes:
       - inspirational-quotes-db:/data/db
-  inspirational-quotes-api:
-    restart: always
-    depends_on:
-      - inspirational-quotes-db
-    build:
-      context: ./api
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./api:/usr/src/app
   
 volumes:
   inspirational-quotes-db:
