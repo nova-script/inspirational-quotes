@@ -16,6 +16,8 @@ It should also be a complete social media in the near future, along with user re
 
 ## API
 
+#### **Requirements**:
+
 👤 User features:
 
 - [x] View all registered quotes
@@ -25,7 +27,23 @@ It should also be a complete social media in the near future, along with user re
 - [x] Delete existent quote
 
 
+#### **How to Run**:
+
+Simply build the `MongoDB` and `API` containers and run it:
+
+```
+docker-compose -f docker-compose-dev.yml up
+```
+
 ## WEB
+
+
+#### **Considerations**:
+
+The web client was build upon **Relay**, along with the **[Render as you Fetch pattern](https://relay.dev/docs/guided-tour/rendering/queries/#render-as-you-fetch)**, which is encouraged by Relay itself as the pattern avoids waterfalling round trips that can lead to performance degradation.
+
+
+#### **Requirements**:
 
 👤 User features:
 
@@ -33,3 +51,12 @@ It should also be a complete social media in the near future, along with user re
 - [x] Edit existent quote
 - [x] Delete existent quote
 - [x] Add new quote
+
+#### **How to Run**:
+
+After `API` is running, simply `cd web` and run:
+
+```
+npm run dev
+```
+
