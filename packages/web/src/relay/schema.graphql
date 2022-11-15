@@ -3,9 +3,13 @@ schema {
   mutation: Mutation
 }
 
-"""Exposes a URL that specifies the behaviour of this scalar."""
+"""
+Exposes a URL that specifies the behaviour of this scalar.
+"""
 directive @specifiedBy(
-  """The URL that specifies the behaviour of this scalar."""
+  """
+  The URL that specifies the behaviour of this scalar.
+  """
   url: String!
 ) on SCALAR
 
@@ -25,4 +29,3 @@ type RootQueryType {
   queryQuoteById(id: String): Quote
   queryAllQuotes: [Quote]
 }
-

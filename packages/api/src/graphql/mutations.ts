@@ -1,16 +1,16 @@
-import { GraphQLObjectType } from 'graphql'
+import { GraphQLObjectType } from "graphql";
 
-import addQuote from './mutations/addQuote'
-import editQuote from './mutations/editQuote'
-import removeQuote from './mutations/removeQuote'
+import addQuote from "./mutations/addQuote";
+import editQuote from "./mutations/editQuote";
+import removeQuote from "./mutations/removeQuote";
 
 const Mutation = new GraphQLObjectType({
-  name: 'Mutation',
+  name: "Mutation",
   fields: {
     addQuote,
     editQuote,
-    removeQuote
-  }
-})
+    removeQuote,
+  },
+});
 
-export default Mutation
+export default Mutation;

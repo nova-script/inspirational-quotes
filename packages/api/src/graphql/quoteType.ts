@@ -1,10 +1,10 @@
-import { GraphQLObjectType, GraphQLString } from 'graphql'
+import { GraphQLObjectType, GraphQLString } from "graphql";
 
 export default new GraphQLObjectType({
-  name: 'Quote',
+  name: "Quote",
   fields: () => ({
     id: { type: GraphQLString },
     author: { type: GraphQLString },
-    quote: { type: GraphQLString }
-  })
-})
+    quote: { type: GraphQLString },
+  }),
+});

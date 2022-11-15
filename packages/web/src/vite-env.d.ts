@@ -1,2 +1,2 @@
-import vite = require('vite/client')
-export default vite
+import vite = require("vite/client");
+export default vite;

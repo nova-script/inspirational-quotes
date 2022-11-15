@@ -1,9 +1,9 @@
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
-function ResponsiveAppBar (): JSX.Element {
+function ResponsiveAppBar(): JSX.Element {
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -14,14 +14,15 @@ function ResponsiveAppBar (): JSX.Element {
             component="a"
             href="/"
             sx={{
-              mx: 'auto',
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              mx: "auto",
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.2rem',
-              color: 'inherit',
-              textDecoration: 'none'
-            }}>
+              letterSpacing: ".2rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
             INSPIRATIONAL QUOTES
           </Typography>
 
@@ -31,19 +32,20 @@ function ResponsiveAppBar (): JSX.Element {
             component="a"
             href=""
             sx={{
-              display: { xs: 'flex', md: 'none' },
-              mx: 'auto',
-              fontFamily: 'monospace',
+              display: { xs: "flex", md: "none" },
+              mx: "auto",
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none'
-            }}>
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
             INSPIRATIONAL QUOTES
           </Typography>
         </Toolbar>
       </Container>
     </AppBar>
-  )
+  );
 }
-export default ResponsiveAppBar
+export default ResponsiveAppBar;

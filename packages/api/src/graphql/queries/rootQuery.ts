@@ -1,12 +1,12 @@
-import { GraphQLObjectType } from 'graphql'
+import { GraphQLObjectType } from "graphql";
 
-import queryAllQuotes from './queryAllQuotes'
-import queryQuoteById from './queryQuoteById'
+import queryAllQuotes from "./queryAllQuotes";
+import queryQuoteById from "./queryQuoteById";
 
 export default new GraphQLObjectType({
-  name: 'RootQueryType',
+  name: "RootQueryType",
   fields: {
     queryQuoteById,
-    queryAllQuotes
-  }
-})
+    queryAllQuotes,
+  },
+});
