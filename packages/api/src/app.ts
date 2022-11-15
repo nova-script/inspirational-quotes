@@ -4,7 +4,7 @@ import { graphqlHTTP } from "koa-graphql";
 import cors from "@koa/cors";
 import mongoose from "mongoose";
 
-import GraphQLSchema from "./graphql/schema";
+import GraphQLSchema from "./schema/schema";
 
 mongoose.connect(
   "mongodb://0.0.0.0:27017/graphql",
