@@ -6,7 +6,8 @@
     },
     "extends": [
         "plugin:react/jsx-runtime",
-        "standard-with-typescript"
+        "standard-with-typescript",
+        "prettier"
     ],
     "overrides": [
     ],
