@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsnd --exit-child ./src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "prettier --write . && eslint . --fix"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",

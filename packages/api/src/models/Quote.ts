@@ -11,7 +11,7 @@ const QuoteSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { collection: "Quote" }
+  { collection: "Quote" },
 );
 
 export default mongoose.model("Quote", QuoteSchema);

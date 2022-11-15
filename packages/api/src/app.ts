@@ -13,12 +13,12 @@ mongoose.connect(
     user: "root",
     pass: "rootpassword",
   },
-  (err) => {
+  err => {
     if (err != null) process.exit(1);
-  }
+  },
 );
 
-mongoose.connection.once("open", (err) => {
+mongoose.connection.once("open", err => {
   if (err != null) process.exit(1);
   console.log("Successfully connected to database!");
 });
@@ -33,8 +33,8 @@ app.use(
       schema: GraphQLSchema,
       graphiql: true,
       pretty: true,
-    })
-  )
+    }),
+  ),
 );
 
 app.listen(8000);
