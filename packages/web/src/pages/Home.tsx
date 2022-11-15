@@ -1,12 +1,11 @@
 import {
   graphql,
   loadQuery
-} from 'react-relay';
-import ResponsiveAppBar from '../components/ResponsiveAppBar';
-import { HomeStyle } from '../assets/styles/Home';
-import relayEnvironment from '../relay/relayEnvironment';;
-import FetchQuotes from '../components/Quotes/Fetch';
-
+} from 'react-relay'
+import ResponsiveAppBar from '../components/ResponsiveAppBar'
+import { HomeStyle } from '../assets/styles/Home'
+import relayEnvironment from '../relay/relayEnvironment'
+import FetchQuotes from '../components/Quotes/Fetch'
 
 export const homeAllQuotesQuery = graphql`
   query HomeAllQuotesQuery {
@@ -15,7 +14,7 @@ export const homeAllQuotesQuery = graphql`
       quote
       author
     }
-  }`;
+  }`
 
 const queryReference: any = loadQuery(
   relayEnvironment,
@@ -23,7 +22,7 @@ const queryReference: any = loadQuery(
   {}
 )
 
-export default function Home(props: any) {
+export default function Home (props: any): JSX.Element {
   return (
       <div>
         <HomeStyle/>

@@ -1,12 +1,9 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
 
-
-function ResponsiveAppBar() {
+function ResponsiveAppBar (): JSX.Element {
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -23,7 +20,7 @@ function ResponsiveAppBar() {
               fontWeight: 700,
               letterSpacing: '.2rem',
               color: 'inherit',
-              textDecoration: 'none',
+              textDecoration: 'none'
             }}>
             INSPIRATIONAL QUOTES
           </Typography>
@@ -40,13 +37,13 @@ function ResponsiveAppBar() {
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
-              textDecoration: 'none',
+              textDecoration: 'none'
             }}>
             INSPIRATIONAL QUOTES
           </Typography>
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
-export default ResponsiveAppBar;
+export default ResponsiveAppBar

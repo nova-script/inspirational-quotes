@@ -1,13 +1,12 @@
-import { RefObject, createRef, useState } from 'react';
-import { commitMutation, graphql } from 'react-relay';
-import { Card, Box, Button, Typography, Modal } from '@mui/material';
+import { RefObject, createRef, useState } from 'react'
+import { commitMutation, graphql } from 'react-relay'
+import { Card, Box, Button, Typography, Modal } from '@mui/material'
 
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
+import AddCircleIcon from '@mui/icons-material/AddCircle'
+import CancelIcon from '@mui/icons-material/Cancel'
 
-import { QuoteField } from './Field';
-import relayEnvironment from '../../relay/relayEnvironment';
-
+import { QuoteField } from './Field'
+import relayEnvironment from '../../relay/relayEnvironment'
 
 const AddQuoteMutation = graphql`
   mutation AddQuoteMutation($quote: String! $author: String!) {
@@ -16,17 +15,15 @@ const AddQuoteMutation = graphql`
       author
     }
   }
-`;
+`
 
-function commitAddQuoteMutation(environment: any, quote: any, author: any) {
+function commitAddQuoteMutation (environment: any, quote: any, author: any): any {
   return commitMutation(environment, {
     mutation: AddQuoteMutation,
     variables: {
       quote,
       author
-    },
-    onCompleted: response => {},
-    onError: error => {}
+    }
   })
 }
 
@@ -35,39 +32,39 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '420px',
-};
-
-interface AddQuoteProps {
-    refresh: any;
+  width: '420px'
 }
 
-export default function AddQuote(props: AddQuoteProps) {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+interface AddQuoteProps {
+  refresh: any
+}
 
-    const authorRef: RefObject<any> = createRef()
-    const quoteRef: RefObject<any> = createRef()
+export default function AddQuote (props: AddQuoteProps): JSX.Element {
+  const [open, setOpen] = useState(false)
+  const handleOpen = (): void => setOpen(true)
+  const handleClose = (): void => setOpen(false)
 
-    function handleCreateButton(): any {
-        commitAddQuoteMutation(
-            relayEnvironment,
-            quoteRef.current.getContent(),
-            authorRef.current.getContent())
-        props.refresh()
-        handleClose()
-    }
+  const authorRef: RefObject<any> = createRef()
+  const quoteRef: RefObject<any> = createRef()
 
-    return (
+  function handleCreateButton (): any {
+    commitAddQuoteMutation(
+      relayEnvironment,
+      quoteRef.current.getContent(),
+      authorRef.current.getContent())
+    props.refresh()
+    handleClose()
+  }
+
+  return (
         <div>
             <Button
                 onClick={handleOpen}
                 variant='contained'
-                sx={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <AddCircleIcon
                 fontSize='large'
-                sx={{color: 'white'}}/>
+                sx={{ color: 'white' }}/>
                 <Typography fontWeight='600'> Add new quote </Typography>
             </Button>
             <Modal
@@ -75,10 +72,11 @@ export default function AddQuote(props: AddQuoteProps) {
             onClose={handleClose}>
             <Box sx={style}>
                 <Card sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between'}}>
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between'
+                }}>
 
                     <Typography margin={2} marginBottom={0} variant='h6' fontWeight={900} color='primary'>
                         📝 Add new quote:
@@ -90,7 +88,7 @@ export default function AddQuote(props: AddQuoteProps) {
                     content={''}
                     isEditing={true}
                     ref={quoteRef}/>
-                
+
                     <QuoteField
                     placeholder="Insert author"
                     type="author"
@@ -98,13 +96,13 @@ export default function AddQuote(props: AddQuoteProps) {
                     isEditing={true}
                     ref={authorRef}/>
 
-                    <Box sx={{minWidth: "20%", marginTop: "15px"}}>
+                    <Box sx={{ minWidth: '20%', marginTop: '15px' }}>
                         <Button
                         size="small"
                         color="error"
                         variant="contained"
                         onClick={handleClose}
-                        sx={{ height: "100%", width: "50%", padding: "10px", borderRadius: 0, borderBottomLeftRadius: 4}}>
+                        sx={{ height: '100%', width: '50%', padding: '10px', borderRadius: 0, borderBottomLeftRadius: 4 }}>
                             <CancelIcon/>
                         </Button>
                         <Button
@@ -112,7 +110,7 @@ export default function AddQuote(props: AddQuoteProps) {
                         size="small"
                         color="primary"
                         variant="contained"
-                        sx={{ height: "100%", width: "50%", padding: "10px", borderRadius: 0, borderBottomRightRadius: 4}}>
+                        sx={{ height: '100%', width: '50%', padding: '10px', borderRadius: 0, borderBottomRightRadius: 4 }}>
                             <AddCircleIcon/>
                         </Button>
                     </Box>
@@ -120,5 +118,5 @@ export default function AddQuote(props: AddQuoteProps) {
             </Box>
             </Modal>
         </div>
-    );
+  )
 }
