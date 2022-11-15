@@ -25,7 +25,7 @@ function commitEditQuoteMutation(
   environment: any,
   id: any,
   quote: any,
-  author: any
+  author: any,
 ): any {
   return commitMutation(environment, {
     mutation: EditQuoteMutation,
@@ -60,7 +60,7 @@ export default function Quote(props: QuoteProps): JSX.Element {
         relayEnvironment,
         props.id,
         quoteRef.current.getContent(),
-        authorRef.current.getContent()
+        authorRef.current.getContent(),
       );
       setIsEditing(false);
     }
@@ -108,7 +108,7 @@ export default function Quote(props: QuoteProps): JSX.Element {
           size="small"
           color="error"
           variant="contained"
-          onClick={(e) => {
+          onClick={e => {
             handleRemoveButton();
           }}
           sx={{

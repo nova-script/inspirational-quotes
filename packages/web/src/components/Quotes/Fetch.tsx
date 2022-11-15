@@ -9,11 +9,10 @@ interface QuotesProps {
 }
 
 export default function FetchQuotes(props: QuotesProps): JSX.Element {
-  const [quotesQueryReference, loadQuotesQuery] =
-    useQueryLoader<HomeAllQuotesQueryType>(
-      homeAllQuotesQuery,
-      props.queryReference
-    );
+  const [quotesQueryReference, loadQuotesQuery] = useQueryLoader<HomeAllQuotesQueryType>(
+    homeAllQuotesQuery,
+    props.queryReference,
+  );
 
   /* eslint-disable */
   const onQuotesFetch = (): void => {

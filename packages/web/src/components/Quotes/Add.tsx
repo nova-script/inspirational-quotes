@@ -17,11 +17,7 @@ const AddQuoteMutation = graphql`
   }
 `;
 
-function commitAddQuoteMutation(
-  environment: any,
-  quote: any,
-  author: any
-): any {
+function commitAddQuoteMutation(environment: any, quote: any, author: any): any {
   return commitMutation(environment, {
     mutation: AddQuoteMutation,
     variables: {
@@ -55,7 +51,7 @@ export default function AddQuote(props: AddQuoteProps): JSX.Element {
     commitAddQuoteMutation(
       relayEnvironment,
       quoteRef.current.getContent(),
-      authorRef.current.getContent()
+      authorRef.current.getContent(),
     );
     props.refresh();
     handleClose();

@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "npm run relay && vite",
     "build": "tsc && vite build",
-    "lint": "prettier --write . && eslint . --fix",
     "preview": "vite preview",
     "relay": "relay-compiler"
   },

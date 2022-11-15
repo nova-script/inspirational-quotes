@@ -2,9 +2,7 @@ import { Environment, Network, RecordSource, Store } from "relay-runtime";
 import fetchGraphQL from "./fetchGraphQL";
 
 async function fetchRelay(params: any, variables: any): Promise<any> {
-  console.log(
-    `fetching query ${params.name} with ${JSON.stringify(variables)}`
-  );
+  console.log(`fetching query ${params.name} with ${JSON.stringify(variables)}`);
   return await fetchGraphQL(params.text, variables);
 }
 
