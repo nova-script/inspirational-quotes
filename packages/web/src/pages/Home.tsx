@@ -1,8 +1,14 @@
 import { graphql, loadQuery } from "react-relay";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
-import { HomeStyle } from "../assets/styles/Home";
+import { createGlobalStyle } from "styled-components";
 import relayEnvironment from "../relay/relayEnvironment";
 import FetchQuotes from "../components/Quotes/Fetch";
+
+export const HomeStyle = createGlobalStyle`
+  body {
+    background: #e1f5fe;
+  }
+`;
 
 export const homeAllQuotesQuery = graphql`
   query HomeAllQuotesQuery {
