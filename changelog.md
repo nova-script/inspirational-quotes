@@ -6,6 +6,6 @@ Here are some improvements that can be made and will be.
 
 - [x] Implement `Render-as-you-Fetch` pattern.
 - [x] Make the project a monorepo by using `turbo`.
-- [x] Add `lint` and `prettier`.
-- [ ] Implement `Folder-by-Feature` as file structure.
-
+- [x] Add `ESlint` and `prettier`.
+- [x] Implement `Folder-by-Feature` as file structure.
+- [x] Keep every `style` on components themself.
