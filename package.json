@@ -10,6 +10,18 @@
     "packages/*"
   ],
   "devDependencies": {
-    "turbo": "^1.6.3"
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "^8.27.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.10",
+    "turbo": "^1.6.3",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "prettier": "^2.7.1"
   }
 }
